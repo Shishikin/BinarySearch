@@ -104,21 +104,7 @@ int BinarySearch(int value, const std::vector<int>& array, int begin, int end)
     {
         return array[begin] == value ? begin : -1;
     }
-    if (end - begin == 1)
-    {
-        if (array[begin] == value)
-        {
-            return begin;
-        }
-        else if (array[end] == value)
-        {
-            return end;
-        }
-        else
-        {
-            return -1;
-        }
-    }
+
     if (array[(end - begin) / 2 + 1 + begin] == value)
     {
         return (end - begin) / 2 + 1 + begin;
@@ -131,7 +117,7 @@ int BinarySearch(int value, const std::vector<int>& array, int begin, int end)
         }
         else
         {
-            return BinarySearch(value, array, (end - begin) / 2 + 2 + begin, end);
+            return BinarySearch(value, array, (end - begin) / 2 + 1 + begin, end);
         }
     }
 }
@@ -142,8 +128,8 @@ int main()
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
 #endif
-    std::vector<int> array;
-    PushVectorRandom(array, 10);
+    std::vector<int> array = { 0, 13, 25, 27, 31, 48, 55, 70, 84, 97 };
+//    PushVectorRandom(array, 10);
     quick_sort(array, 0, array.size() - 1);
     PrintVector(array);
     int value = 0;
